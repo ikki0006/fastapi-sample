@@ -1,0 +1,17 @@
+{
+    "ignoreWords": [
+        "ikki",
+        "fastapi",
+        "mypy",
+        "venv",
+        "devcontainer",
+        "uvicorn",
+        "pydantic"
+    ],
+    "ignorePaths": [
+        ".devcontainer",
+        ".venv",
+        "requirements-dev.lock",
+        "requirements.lock"
+    ]
+  }

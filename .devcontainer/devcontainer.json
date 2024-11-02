@@ -1,0 +1,71 @@
+{
+  "name": "fastapi",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "api",
+  "workspaceFolder": "/fastapi-sample",
+  "shutdownAction": "stopCompose",
+  "remoteUser": "vscode",
+  "postCreateCommand": "bash ./install.sh",
+  "features": {
+    "docker-from-docker": {
+      "version": "latest"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "files.eol": "\n",
+        "files.insertFinalNewline": true,
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.rulers": [80, 120],
+        "search.followSymlinks": true,
+        "[json]": {
+          "editor.insertSpaces": true,
+          "editor.tabSize": 2,
+          "editor.autoIndent": "advanced",
+          "diffEditor.ignoreTrimWhitespace": false
+        },
+        "[yaml]": {
+          "editor.insertSpaces": true,
+          "editor.tabSize": 2,
+          "editor.autoIndent": "advanced",
+          "diffEditor.ignoreTrimWhitespace": false
+        },
+        "python.defaultInterpreterPath": "/fastapi-sample/.venv/bin/python",
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "ruff.nativeServer": "on",
+        "[python]": {
+          "editor.formatOnSave": true,
+          "python.linting.enabled": true,
+          "python.linting.ruffEnabled": true,
+          "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+          }
+        }
+      },
+      "python.analysis.typeCheckingMode": "strict",
+      "files.exclude": {
+        ".venv": true,
+        "**/__pycache__": true,
+        "**/*.pyc": true,
+        ".*cache": true,
+        "*.lock": true
+      },
+      "mypy-type-checker.args": [
+        "--config=../pyproject.toml"
+      ],
+      "extensions": [
+        "redhat.vscode-yaml",
+        "eamodio.gitlens",
+        "shardulm94.trailing-spaces",
+        "wayou.vscode-todo-highlight",
+        "oderwat.indent-rainbow",
+        "streetsidesoftware.code-spell-checker",
+        "charliermarsh.ruff",
+        "ms-python.python",
+        "ms-python.mypy-type-checker"
+      ]
+    }
+  }
+}

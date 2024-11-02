@@ -1,0 +1,17 @@
+version: "3.0"
+
+services:
+  api:
+    container_name: "api"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../:/fastapi-sample
+      - ~/.gitconfig:/root/.gitconfig
+    env_file:
+      - .docker_env
+    tty: true
+    platform: linux/x86_64
+    ports:
+      - 8080:8080
