@@ -7,10 +7,11 @@ authors = [
 ]
 dependencies = [
     "fastapi>=0.115.4",
+    "pydantic-settings>=2.6.1",
     "uvicorn[standard]>=0.32.0",
 ]
 readme = "README.md"
-requires-python = ">= 3.8"
+requires-python = ">= 3.12"
 
 [build-system]
 requires = ["hatchling"]
@@ -43,3 +44,8 @@ disallow_untyped_calls = true  # 型アノテーションのない関数呼び�
 plugins = "pydantic.mypy"
 
 [tool.ruff]
+
+
+# ファイルごとのエラー除外
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]

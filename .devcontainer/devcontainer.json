@@ -45,6 +45,7 @@
         }
       },
       "python.analysis.typeCheckingMode": "strict",
+      "python.analysis.extraPaths": ["./app"],
       "files.exclude": {
         ".venv": true,
         "**/__pycache__": true,

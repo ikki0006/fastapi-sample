@@ -53,7 +53,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
 USER $USERNAME
 
 # install uv
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh 
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # to show Japanese git log
 ENV LESSCHARSET=utf-8

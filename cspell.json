@@ -6,11 +6,14 @@
         "venv",
         "devcontainer",
         "uvicorn",
-        "pydantic"
+        "pydantic",
+        "pyproject",
+        "pylint"
     ],
     "ignorePaths": [
         ".devcontainer",
         ".venv",
-        "uv.lock"
+        "uv.lock",
+        "log_conf.yml"
     ]
   }

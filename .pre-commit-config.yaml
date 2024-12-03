@@ -41,5 +41,5 @@ repos:
         exclude: tests/
         require_serial: true
         # Add types package list
-        additional_dependencies: [pydantic, fastapi]
+        additional_dependencies: [pydantic, fastapi, pydantic-settings]
         minimum_pre_commit_version: '2.9.2'
