@@ -1,5 +1,5 @@
-ARG PYTHON_VERSION=3.13.0-bookworm
-FROM python:${PYTHON_VERSION}
+ARG PYTHON_VERSION=3.13.0
+FROM python:${PYTHON_VERSION}-bookworm
 
 ARG USERNAME=vscode
 ARG USER_UID=1001
@@ -52,10 +52,8 @@ RUN groupadd --gid $USER_GID $USERNAME \
 
 USER $USERNAME
 
-# install rye
-RUN curl -sSf https://rye.astral.sh/get | RYE_INSTALL_OPTION="--yes" bash && \
-    source "$HOME/.rye/env" \
-    rye config --set-bool behavior.global-python=true
+# install uv
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh 
 
 # to show Japanese git log
 ENV LESSCHARSET=utf-8

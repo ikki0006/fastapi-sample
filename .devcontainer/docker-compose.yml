@@ -9,6 +9,7 @@ services:
     volumes:
       - ../:/fastapi-sample
       - ~/.gitconfig:/root/.gitconfig
+      - ${USERPROFILE-~}/.ssh:/home/vscode/.ssh
     env_file:
       - .docker_env
     tty: true
