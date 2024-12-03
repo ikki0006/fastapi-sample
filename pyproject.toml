@@ -22,6 +22,8 @@ dev-dependencies = [
     "ruff>=0.7.2",
     "mypy>=1.13.0",
     "pydantic[mypy]>=2.9.2",
+    "pytest>=8.3.4",
+    "httpx>=0.28.0",
 ]
 
 [tool.hatch.metadata]
@@ -42,7 +44,7 @@ warn_return_any = true  # 戻り値の型が Any になっている場合に警�
 disallow_any_explicit = true  # 明示的な Any 型の使用を禁止
 disallow_untyped_calls = true  # 型アノテーションのない関数呼び出しを禁止
 plugins = "pydantic.mypy"
-
+ignore_patterns = ["tests/*"]
 [tool.ruff]
 
 

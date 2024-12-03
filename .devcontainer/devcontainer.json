@@ -54,7 +54,7 @@
         "*.lock": true
       },
       "mypy-type-checker.args": [
-        "--config=../pyproject.toml"
+        "--config-file==./pyproject.toml"
       ],
       "extensions": [
         "redhat.vscode-yaml",
