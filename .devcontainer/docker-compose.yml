@@ -15,4 +15,28 @@ services:
     tty: true
     platform: linux/x86_64
     ports:
-      - 8080:8080
+      - 80:80
+    depends_on:
+      - dynamodb
+      - elasticmq
+  dynamodb:
+    image: amazon/dynamodb-local:2.5.3
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./dynamodb:/data
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath /data"
+  dynamodb-admin:
+    image: aaronshaf/dynamodb-admin:5.1.3
+    ports:
+      - "8001:8001"
+    environment:
+      - DYNAMO_ENDPOINT=http://dynamodb:8000
+    depends_on:
+      - dynamodb
+  elasticmq:
+    container_name: elasticmq
+    image: softwaremill/elasticmq-native:1.6.9
+    ports:
+      - "9324:9324"
+      - "9325:9325"
