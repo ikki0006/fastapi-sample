@@ -6,9 +6,12 @@ authors = [
     { name = "ikki0006", email = "ikki0006@gmail.com" }
 ]
 dependencies = [
+    "boto3-stubs>=1.35.74",
+    "boto3>=1.35.74",
     "fastapi>=0.115.4",
     "pydantic-settings>=2.6.1",
     "uvicorn[standard]>=0.32.0",
+    "python-ulid>=3.0.0",
 ]
 readme = "README.md"
 requires-python = ">= 3.12"
@@ -44,10 +47,28 @@ warn_return_any = true  # 戻り値の型が Any になっている場合に警�
 disallow_any_explicit = true  # 明示的な Any 型の使用を禁止
 disallow_untyped_calls = true  # 型アノテーションのない関数呼び出しを禁止
 plugins = "pydantic.mypy"
-ignore_patterns = ["tests/*"]
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+
+[[tool.mypy.overrides]]
+module = "boto3.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "ulid.*"
+ignore_missing_imports = true
+
 [tool.ruff]
 
 
 # ファイルごとのエラー除外
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore::DeprecationWarning"
+]

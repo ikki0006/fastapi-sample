@@ -8,12 +8,17 @@
         "uvicorn",
         "pydantic",
         "pyproject",
-        "pylint"
+        "pylint",
+        "usecase",
+        "usecases",
+        "sonet",
+        "boto3"
     ],
     "ignorePaths": [
         ".devcontainer",
         ".venv",
         "uv.lock",
-        "log_conf.yml"
+        "log_conf.yml",
+        "pyproject.toml",
     ]
   }

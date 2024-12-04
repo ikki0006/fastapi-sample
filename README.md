@@ -2,7 +2,7 @@
 
 ## 初回対応
 1. envファイルを準備する
-2. 
+-> 環境により差分があるが見えててもいい変数は.envに。見えては行けない変数は.devcontainer/docker_envに記載する
 
 devcontainerの拡張機能を入れて、コンテナを立ち上げる
 
@@ -19,7 +19,7 @@ source .venv/bin/activate
 
 
 ### 起動コマンド
-uvicorn app.main:app --reload --log-config log_conf.yml
+uvicorn app.main:app --host=0.0.0.0 --port=80 --log-config log_conf.yml --reload
 
 
 ### localでのdynamo確認

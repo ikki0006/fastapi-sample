@@ -22,12 +22,6 @@ class HttpRequestMiddleware(BaseHTTPMiddleware):
                 status_code=status.HTTP_400_BAD_REQUEST,
                 content={"message": f"{type(exc)}"},
             )
-        except ValueError as exc:
-            _logger.info(traceback.format_exc())
-            response = JSONResponse(
-                status_code=status.HTTP_402_PAYMENT_REQUIRED,
-                content={"message": f"{type(exc)}"},
-            )
         except Exception:
             _logger.error(traceback.format_exc())
             response = JSONResponse(

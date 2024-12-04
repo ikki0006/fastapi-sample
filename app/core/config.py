@@ -13,6 +13,8 @@ class Settings(BaseSettings):  # type: ignore
     PROJECT_NAME: str = "FastAPI"
     ENVIRONMENT: Literal["local", "staging", "production"] = "local"
     BACKEND_CORS_ORIGINS: list[str] = []
+    DYNAMO_DB_POLING_TABLE: str = ""
+    DYNAMO_DB_PUSH_TABLE: str = ""
 
 
 settings = Settings()  # type: ignore
