@@ -2,21 +2,23 @@ from typing import Dict
 
 from pydantic import BaseModel
 
+from app.domain.enum.enum import ModelName
+
 
 class LlmData(BaseModel):
-    model: str
+    model: ModelName
     path: str
     prompt: Dict[str, str]
 
 
 class Result(BaseModel):
-    id: str
+    reception_id: str
 
 
 class ReceptionRequest(BaseModel):
     session_id: int
     polling: bool
-    data: LlmData
+    body: LlmData
 
 
 class ReceptionResponse(BaseModel):
