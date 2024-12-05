@@ -1,24 +1,26 @@
-from typing import Dict
+from typing import Dict, List
 
 from pydantic import BaseModel
 
-from app.domain.enum.enum import ModelName
+from app.domain.enum.enum import AnthropicModelName, GoogleModelName, SystemName
 
 
 class LlmData(BaseModel):
-    model: ModelName
+    model: AnthropicModelName | GoogleModelName
     path: str
     prompt: Dict[str, str]
 
 
 class Result(BaseModel):
-    reception_id: str
+    reception_ids: List[str]
+    group_id: str
 
 
 class ReceptionRequest(BaseModel):
     session_id: int
     polling: bool
-    body: LlmData
+    system: SystemName
+    body: List[LlmData]
 
 
 class ReceptionResponse(BaseModel):

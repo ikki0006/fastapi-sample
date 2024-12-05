@@ -12,7 +12,10 @@
         "usecase",
         "usecases",
         "sonet",
-        "boto3"
+        "boto3",
+        "anthoropic",
+        "gemimi",
+        "apikey"
     ],
     "ignorePaths": [
         ".devcontainer",
@@ -20,5 +23,6 @@
         "uv.lock",
         "log_conf.yml",
         "pyproject.toml",
+        ".env"
     ]
   }

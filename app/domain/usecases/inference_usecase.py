@@ -15,6 +15,7 @@ class InferenceUsecase:
     def handle_llm_inference(self) -> InferenceResponse:
         # session_id: int = self.request.session_id
         reception_id: str = self.request.body.reception_id
-        table = self.dynamoDB_client.get_table_name(self.request.body.polling)
-        self.dynamoDB_client.get_item(table, reception_id)
+        self.dynamoDB_client.get_table_name(self.request.body.polling)
+        self.dynamoDB_client.get_item(key=reception_id)
+
         return InferenceResponse(message_id=self.request.message_id, result="success")

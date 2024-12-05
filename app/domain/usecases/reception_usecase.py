@@ -1,3 +1,5 @@
+from typing import List
+
 from ulid import ULID
 
 from app.domain.entities.dynamodb_entity import DynamoDBData
@@ -19,17 +21,27 @@ class ReceptionUsecase:
 
     def handle_queue_reception(self) -> ReceptionResponse:
         session_id: int = self.request.session_id
-        reception_id: str = str(ULID())
-        table = self.dynamoDB_client.get_table_name(self.request.polling)
-        data: DynamoDBData = DynamoDBData(
-            id=reception_id,
-            status=DynamoDBStatus.Queued,
-            model=self.request.body.model,
-            path=self.request.body.path,
-            input=self.request.body.prompt,
-            result={},
-        )
-        self.dynamoDB_client.put_item(table, data)
+        group_id: str = str(ULID())
+        self.dynamoDB_client.get_table_name(self.request.polling)
+        data_list: List[DynamoDBData] = []
+        id_list: List[str] = []
+        for index, data in enumerate(self.request.body):
+            id: str = str(ULID())
+            dynamodb_data: DynamoDBData = DynamoDBData(
+                id=id,
+                group_id=group_id,
+                group_index=index,
+                status=DynamoDBStatus.Queued,
+                system=self.request.system,
+                model=data.model,
+                path=data.path,
+                input=data.prompt,
+            )
+            id_list.append(id)
+            data_list.append(dynamodb_data)
+
+        self.dynamoDB_client.batch_put_item(data_list)
         return ReceptionResponse(
-            session_id=session_id, result=Result(**{"reception_id": reception_id})
+            session_id=session_id,
+            result=Result(reception_ids=id_list, group_id=group_id),
         )

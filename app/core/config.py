@@ -16,5 +16,7 @@ class Settings(BaseSettings):  # type: ignore
     DYNAMO_DB_POLING_TABLE: str = ""
     DYNAMO_DB_PUSH_TABLE: str = ""
 
+    ANTHROPIC_API_KEY: str = ""
 
-settings = Settings()  # type: ignore
+
+settings = Settings()
