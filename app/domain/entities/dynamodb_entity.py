@@ -4,11 +4,10 @@ from typing import Dict
 from pydantic import BaseModel
 
 from app.domain.enum.enum import (
-    AnthropicModelName,
     DynamoDBStatus,
-    GoogleModelName,
     SystemName,
 )
+from app.domain.enum.llm_enum import AnthropicModelName, GoogleModelName
 
 
 class DynamoDBData(BaseModel):

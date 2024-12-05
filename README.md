@@ -25,3 +25,5 @@ uvicorn app.main:app --host=0.0.0.0 --port=80 --log-config log_conf.yml --reload
 ### localでのdynamo確認
 http://localhost:8001/
 データは`./.devcontainer/dynamodb`に入る。サイズが肥大化したら削除推奨
+2byte文字はエスケープシークエンスになるので下記で変換
+https://develop.tools/unicode-escape/

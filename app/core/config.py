@@ -15,8 +15,7 @@ class Settings(BaseSettings):  # type: ignore
     BACKEND_CORS_ORIGINS: list[str] = []
     DYNAMO_DB_POLING_TABLE: str = ""
     DYNAMO_DB_PUSH_TABLE: str = ""
-
-    ANTHROPIC_API_KEY: str = ""
+    ANTHROPIC_API_KEY_1: str = ""
 
 
 settings = Settings()

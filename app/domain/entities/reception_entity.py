@@ -2,7 +2,8 @@ from typing import Dict, List
 
 from pydantic import BaseModel
 
-from app.domain.enum.enum import AnthropicModelName, GoogleModelName, SystemName
+from app.domain.enum.enum import SystemName
+from app.domain.enum.llm_enum import AnthropicModelName, GoogleModelName
 
 
 class LlmData(BaseModel):

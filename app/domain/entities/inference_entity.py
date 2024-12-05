@@ -1,8 +1,10 @@
+from typing import List
+
 from pydantic import BaseModel
 
 
 class SQSData(BaseModel):
-    reception_id: str
+    reception_ids: List[str]
     polling: bool
 
 
