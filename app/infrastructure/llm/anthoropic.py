@@ -27,16 +27,14 @@ class AnthoropicApi:
         n_retry: int = 3,
     ) -> LLMApiResponse | None:
         api_key = self._select_anthropic_api_key()
-        client = Anthropic(
-            api_key=api_key,
-            timeout=httpx.Timeout(120.0, read=5.0, write=10.0, connect=2.0),
-        )
+        client = Anthropic(api_key=api_key)
 
         response = None
         for idx in range(1, n_retry + 1):
             try:
                 _logger.info(f"({idx}/{n_retry}) Generating response...")
                 start_time = time.time()
+                _logger.info(f"message: {message}")
                 messages = self._build_messages(message)
                 chat_completion = client.messages.create(
                     max_tokens=max_tokens,
