@@ -2,6 +2,8 @@ from typing import List
 
 from pydantic import BaseModel
 
+from app.domain.entities.dynamodb_entity import DynamoDBData
+
 
 class SQSData(BaseModel):
     reception_ids: List[str]
@@ -17,3 +19,7 @@ class InferenceRequest(BaseModel):
 class InferenceResponse(BaseModel):
     message_id: str
     result: str
+
+
+class GetInferenceResponse(BaseModel):
+    result: DynamoDBData

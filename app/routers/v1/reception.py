@@ -8,7 +8,7 @@ router = APIRouter(tags=["reception"])
 
 
 @router.post("/reception")
-def read_root(receptionRequest: ReceptionRequest) -> ReceptionResponse:
+def post_reception(receptionRequest: ReceptionRequest) -> ReceptionResponse:
     dynamoDB_client = DynamoDB_Client()
     receptionUsecase = ReceptionUsecase(receptionRequest, dynamoDB_client)
     response: ReceptionResponse = receptionUsecase.handle_queue_reception()

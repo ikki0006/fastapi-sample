@@ -39,6 +39,7 @@ class DynamoDB_Client:
                 batch.put_item(Item=item)
 
     def get_item(self, key: str) -> DynamoDBData:
+        _logger.info(f"get_item: {key}")
         response = self.table.get_item(Key={"id": key})
         return self._convert_to_dynamodb_data(response)
 

@@ -7,6 +7,7 @@ from jinja2 import Template
 from app.core.utils.file import file_loader
 from app.domain.entities.dynamodb_entity import DynamoDBData
 from app.domain.entities.inference_entity import (
+    GetInferenceResponse,
     InferenceRequest,
     InferenceResponse,
 )
@@ -88,3 +89,17 @@ class InferenceUsecase:
             pass
 
         return None
+
+
+class GetInferenceUsecase:
+    def __init__(
+        self,
+        dynamoDB_client: DynamoDB_Client,
+        polling: bool,
+    ) -> None:
+        self.dynamoDB_client = dynamoDB_client
+        self.polling = polling
+
+    def get_inference(self, id: str) -> GetInferenceResponse:
+        self.dynamoDB_client.get_table_name(self.polling)
+        return GetInferenceResponse(**{"result": self.dynamoDB_client.get_item(key=id)})
